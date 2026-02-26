@@ -86,7 +86,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <Link href="/hakkimizda" className="text-sm hover:text-lavender transition-colors">
+                <Link href="/biz-kimiz" className="text-sm hover:text-lavender transition-colors">
                   {tr.footer.about}
                 </Link>
               </li>

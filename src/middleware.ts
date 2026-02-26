@@ -19,6 +19,7 @@ const publicRoutes = [
   "/kurslar",
   "/videolar",
   "/kategoriler",
+  "/biz-kimiz",
   "/hakkimizda",
   "/iletisim",
   "/gizlilik-politikasi",

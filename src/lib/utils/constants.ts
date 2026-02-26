@@ -66,6 +66,7 @@ export const SUBSCRIPTION_PLANS = [
 ] as const;
 
 export const NAV_LINKS = [
+  { href: "/biz-kimiz", label: "Biz Kimiz?" },
   { href: "/uzmanlar", label: "Uzmanlar" },
   { href: "/makaleler", label: "Makaleler" },
   { href: "/kurslar", label: "Kurslar" },
