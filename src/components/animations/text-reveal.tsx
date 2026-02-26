@@ -19,13 +19,14 @@ export function TextReveal({
 }: TextRevealProps) {
   const reduced = useReducedMotion();
   const words = children.split(" ");
+  const baseClass = "flex flex-wrap justify-center w-full";
   if (reduced) {
-    return <span className={cn("inline-flex flex-wrap", className)}>{children}</span>;
+    return <span className={cn(baseClass, className)}>{children}</span>;
   }
 
   return (
     <motion.span
-      className={cn("inline-flex flex-wrap", className)}
+      className={cn(baseClass, className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}

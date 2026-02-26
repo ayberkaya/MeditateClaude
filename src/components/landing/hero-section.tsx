@@ -66,7 +66,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* Heading */}
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 text-center">
           <TextReveal delay={0.3}>
             {tr.landing.heroTitle}
           </TextReveal>
