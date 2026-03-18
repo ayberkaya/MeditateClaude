@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { gemini } from "@/lib/gemini";
+import { generateChatCompletion } from "@/lib/openrouter";
 import { CHATBOT_SYSTEM_PROMPT } from "@/content/chatbot-prompts";
 
 interface ChatRequest {
@@ -53,11 +53,11 @@ export async function POST(request: Request) {
     // Placebo: 1.8–3.2s "düşünme" süresi (kullanıcı yazıyor gibi görsün)
     await randomThinkingDelay();
 
-    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    const apiKey = process.env.OPENROUTER_API_KEY?.trim();
     if (!apiKey) {
       if (process.env.NODE_ENV === "development") {
         console.warn(
-          "[Chatbot] GEMINI_API_KEY yok veya boş – demo yanıt veriliyor. .env.local içine key ekleyip sunucuyu yeniden başlatın."
+          "[Chatbot] OPENROUTER_API_KEY yok veya boş – demo yanıt veriliyor."
         );
       }
       const userMessageCount = body.messages.filter((m) => m.role === "user").length;
@@ -90,22 +90,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const model =
-      process.env.GEMINI_CHATBOT_MODEL || "gemini-2.0-flash";
-    const contents = body.messages.map((m) => ({
-      role: (m.role === "assistant" ? "model" : "user") as "user" | "model",
-      parts: [{ text: m.content }],
-    }));
-    const response = await gemini.models.generateContent({
-      model,
-      contents,
-      config: {
-        systemInstruction: CHATBOT_SYSTEM_PROMPT,
-        maxOutputTokens: 1024,
-      },
-    });
-
-    const fullText = response.text ?? "";
+    const fullText = await generateChatCompletion(body.messages, CHATBOT_SYSTEM_PROMPT);
 
     // Parse analysis block if present
     let analysis = null;
