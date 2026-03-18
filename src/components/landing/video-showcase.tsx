@@ -27,7 +27,7 @@ const PLACEHOLDER_TITLES = [
 ];
 
 function FeaturedPlaceholderVideo() {
-  const [src, setSrc] = useState(STOCK_VIDEOS.showcaseFeaturedLocal);
+  const [src, setSrc] = useState<string>(STOCK_VIDEOS.showcaseFeaturedLocal);
   const fallback = STOCK_VIDEOS.showcaseFeatured;
   return (
     <div className="aspect-video rounded-2xl bg-gradient-to-br from-primary/10 via-lavender/20 to-sage/10 flex items-center justify-center overflow-hidden border border-lavender/20 shadow-xl relative group cursor-pointer">

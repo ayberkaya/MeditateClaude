@@ -18,6 +18,7 @@ export const SUBSCRIPTION_PLANS = [
     name: "Ücretsiz",
     price: 0,
     description: "Ruhsal yolculuğunuza ilk adımınızı atın",
+    popular: false,
     features: [
       "Ayda 3 makale erişimi",
       "Uzman profillerini inceleyin",
@@ -28,6 +29,7 @@ export const SUBSCRIPTION_PLANS = [
     id: "BASIC",
     name: "Keşfet",
     price: 49,
+    popular: false,
     description: "İç dünyanızı keşfetmeye başlayın",
     features: [
       "Sınırsız makale erişimi",
@@ -62,6 +64,7 @@ export const SUBSCRIPTION_PLANS = [
       "VIP topluluk erişimi",
       "Öncelikli destek",
     ],
+    popular: false,
   },
 ] as const;
 

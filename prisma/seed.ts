@@ -1,5 +1,6 @@
-import { PrismaClient, ContentItemType } from "../src/generated/prisma/client";
+import { PrismaClient } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+enum ContentItemType { AUDIO = "AUDIO", VIDEO = "VIDEO", TEXT = "TEXT" }
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL!,
@@ -212,34 +213,15 @@ const DEMO_ITEMS = [
 ];
 
 async function main() {
+  /*
   for (const item of DEMO_ITEMS) {
     await prisma.contentItem.upsert({
       where: { slug: item.slug },
-      create: {
-        ...item,
-        isPreviewAvailable: true,
-        isPublished: true,
-      },
-      update: {
-        title: item.title,
-        type: item.type,
-        durationSec: item.durationSec,
-        goal: item.goal,
-        tags: item.tags,
-        guideName: item.guideName,
-        forWho: item.forWho,
-        forWhoNot: item.forWhoNot,
-        previewUrl: item.previewUrl,
-        previewDurationSec: item.previewDurationSec,
-        fullUrl: item.fullUrl,
-        previewText: item.previewText,
-        fullText: item.fullText,
-        isPreviewAvailable: true,
-        isPublished: true,
-      },
+      ...
     });
   }
-  console.log(`Seeded ${DEMO_ITEMS.length} content items.`);
+  */
+  console.log(`Seed script is currently disabled because ContentItem model was removed from schema.`);
 }
 
 main()
